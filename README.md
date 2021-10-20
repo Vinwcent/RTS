@@ -25,8 +25,8 @@ The idea is to harvest ressources, build buildings and units and then attack you
 The idea behind this game is that I want various strategies to exist on it like destroying windmills so that enemies units die because of a lack of food or by destroying farms.
 
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/91033856/138136609-f0baf6db-a04d-4d89-aef7-78e8598b7591.gif" width=40% height=40%>
-  <img src="https://user-images.githubusercontent.com/91033856/138136625-a3270110-3692-43a1-bea0-48a9760f61f4.gif" width=40% height=40%>
+  <img src="https://user-images.githubusercontent.com/91033856/138136609-f0baf6db-a04d-4d89-aef7-78e8598b7591.gif" width=30% height=30%>
+  <img src="https://user-images.githubusercontent.com/91033856/138136625-a3270110-3692-43a1-bea0-48a9760f61f4.gif" width=30% height=30%>
 </p>
 
 ## Last Update
