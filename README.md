@@ -33,6 +33,8 @@ The idea behind this game is that I want various strategies to exist on it like 
 - Fog of war working on both devices
 
 ## Next update
-- Wolf that make units bleed
-- Ambassador that can recruit enemy units
+- Wolves that make units bleed
+- Ambassadors that can recruit enemy units
 - Beautiful pan Selector
+- User friendly title Screen
+- Possibility to choose side (Human or orc) before the game
