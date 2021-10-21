@@ -24,11 +24,11 @@
 		BF3A14A226E81194006A58CF /* qwerty-two.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF3A14A126E81194006A58CF /* qwerty-two.otf */; };
 		BF43010C26FF6A9E00EF18C1 /* Wolf.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF43010B26FF6A9E00EF18C1 /* Wolf.swift */; };
 		BF43010E26FFD33200EF18C1 /* Ambassador.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF43010D26FFD33200EF18C1 /* Ambassador.swift */; };
-		BF51A0B726D01878001413DC /* Farm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51A0B626D01878001413DC /* Farm.swift */; };
 		BF5865FF26C72B6D002CACCA /* GameTileMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5865FE26C72B6D002CACCA /* GameTileMap.swift */; };
 		BF62C13E2705DC68007DF1E0 /* Archer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62C13D2705DC68007DF1E0 /* Archer.swift */; };
 		BF73AF63271337DF00FBA157 /* SelectedUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF73AF62271337DE00FBA157 /* SelectedUnits.swift */; };
 		BF78426826CBF8CC00E33900 /* Forest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78426726CBF8CC00E33900 /* Forest.swift */; };
+		BF7BCA022721950B0007C338 /* Farm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7BCA012721950B0007C338 /* Farm.swift */; };
 		BF7D2AC8270DC45900B0E639 /* Wizard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7D2AC7270DC45900B0E639 /* Wizard.swift */; };
 		BF8CEC19270F21DC00BA37C9 /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8CEC18270F21DC00BA37C9 /* Tower.swift */; };
 		BF9278CD26C6B54A00395945 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF9278CC26C6B54A00395945 /* LaunchScreen.storyboard */; };
@@ -73,11 +73,11 @@
 		BF3A14A126E81194006A58CF /* qwerty-two.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "qwerty-two.otf"; sourceTree = "<group>"; };
 		BF43010B26FF6A9E00EF18C1 /* Wolf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wolf.swift; sourceTree = "<group>"; };
 		BF43010D26FFD33200EF18C1 /* Ambassador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ambassador.swift; sourceTree = "<group>"; };
-		BF51A0B626D01878001413DC /* Farm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Farm.swift; sourceTree = "<group>"; };
 		BF5865FE26C72B6D002CACCA /* GameTileMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTileMap.swift; sourceTree = "<group>"; };
 		BF62C13D2705DC68007DF1E0 /* Archer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archer.swift; sourceTree = "<group>"; };
 		BF73AF62271337DE00FBA157 /* SelectedUnits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedUnits.swift; sourceTree = "<group>"; };
 		BF78426726CBF8CC00E33900 /* Forest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forest.swift; sourceTree = "<group>"; };
+		BF7BCA012721950B0007C338 /* Farm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Farm.swift; sourceTree = "<group>"; };
 		BF7D2AC7270DC45900B0E639 /* Wizard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wizard.swift; sourceTree = "<group>"; };
 		BF8CEC18270F21DC00BA37C9 /* Tower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tower.swift; sourceTree = "<group>"; };
 		BF9278CC26C6B54A00395945 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -238,7 +238,7 @@
 			children = (
 				BF97EFC326C809D0008DC6BA /* Buildings.swift */,
 				BFD865DF26C934CB00A30D16 /* Base.swift */,
-				BF51A0B626D01878001413DC /* Farm.swift */,
+				BF7BCA012721950B0007C338 /* Farm.swift */,
 				BF364DE226D7B41A00BB3921 /* Barrack.swift */,
 				BFE06A9F26FCC4D8006619D2 /* Supply.swift */,
 				BFBF266626F38EA500F47493 /* Windmill.swift */,
@@ -347,6 +347,7 @@
 				BF364DE326D7B41A00BB3921 /* Barrack.swift in Sources */,
 				BF97EFBF26C7E670008DC6BA /* Peasant.swift in Sources */,
 				BF2ABD2A26C54C800012FFA0 /* GameScene.swift in Sources */,
+				BF7BCA022721950B0007C338 /* Farm.swift in Sources */,
 				BF3A14A026E7C0D3006A58CF /* Gui.swift in Sources */,
 				BFB89E2126E6724C0042084E /* SmallMessage.swift in Sources */,
 				BFD865E026C934CB00A30D16 /* Base.swift in Sources */,
@@ -364,7 +365,6 @@
 				BF8CEC19270F21DC00BA37C9 /* Tower.swift in Sources */,
 				BF78426826CBF8CC00E33900 /* Forest.swift in Sources */,
 				BFBF266726F38EA500F47493 /* Windmill.swift in Sources */,
-				BF51A0B726D01878001413DC /* Farm.swift in Sources */,
 				BF97EFC426C809D0008DC6BA /* Buildings.swift in Sources */,
 				BFD865E426C9410A00A30D16 /* Menu.swift in Sources */,
 				BF2ABD2C26C54C800012FFA0 /* GameViewController.swift in Sources */,

@@ -25,3 +25,16 @@ extension Array where Element: Equatable {
         return [false]
     }
 }
+
+extension SKSpriteNode {
+    
+    func drawBorder(color: UIColor, width: CGFloat) {
+        removeAllChildren()
+        let shapeNode = SKShapeNode(rectOf: size)
+        shapeNode.fillColor = .clear
+        shapeNode.strokeColor = color
+        shapeNode.lineWidth = width
+        shapeNode.zPosition = zPosition
+        addChild(shapeNode)
+    }
+}

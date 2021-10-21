@@ -55,7 +55,7 @@ class GameScene: SKScene {
     // MARK: - VARS
     
     var tileSelector = SKSpriteNode(texture: SKTexture(imageNamed: "tileSelector1", filter: .nearest))
-    var selectionRectangle = SKSpriteNode(color: UIColor.red , size: CGSize(width: 0, height: 0))
+    var selectionRectangle = SKSpriteNode(color: UIColor.clear , size: CGSize(width: 0, height: 0))
     var mapLayer: SKTileMapNode?
     var mapBackground: SKTileMapNode?
     var gridGraph = GKGridGraph(fromGridStartingAt: vector_int2(0,0), width: Int32(0), height: Int32(0), diagonalsAllowed: false)
@@ -112,6 +112,7 @@ class GameScene: SKScene {
         panSelectRecognizer.maximumNumberOfTouches = 2
         self.view!.addGestureRecognizer(panSelectRecognizer)
         
+        selectionRectangle.zPosition = 2
         map.addChild(selectionRectangle)
     }
     
@@ -151,9 +152,9 @@ class GameScene: SKScene {
                 let Xcenter = (firstTouch.x + secondTouch.x)/2
                 let Ycenter = (firstTouch.y + secondTouch.y)/2 // Car la frame d'une UIView est en haut à gauche tandis que celle de ma scène est en bas à droite
                 let center = convert(convertPoint(fromView: CGPoint(x: Xcenter, y: Ycenter)), to: map)
-                selectionRectangle.size = CGSize(width: width, height: height)
-                selectionRectangle.size = CGSize(width: width, height: height)
+                selectionRectangle.size = CGSize(width: width/mapScale, height: height/mapScale)
                 selectionRectangle.position = center
+                selectionRectangle.drawBorder(color: UIColor.lightGray, width: 2)
             }
         case .changed:
             if sender.numberOfTouches > 1 {
@@ -164,8 +165,9 @@ class GameScene: SKScene {
                 let Xcenter = (firstTouch.x + secondTouch.x)/2
                 let Ycenter = (firstTouch.y + secondTouch.y)/2 // Car la frame d'une UIView est en haut à gauche tandis que celle de ma scène est en bas à droite
                 let center = convert(convertPoint(fromView: CGPoint(x: Xcenter, y: Ycenter)), to: map)
-                selectionRectangle.size = CGSize(width: width, height: height)
+                selectionRectangle.size = CGSize(width: width/mapScale, height: height/mapScale)
                 selectionRectangle.position = center
+                selectionRectangle.drawBorder(color: UIColor.lightGray, width: 2)
             }
         case .ended:
             let minX = self.selectionRectangle.frame.minX
@@ -193,6 +195,7 @@ class GameScene: SKScene {
                 }
             }
             selectionRectangle.size = CGSize(width: 0, height: 0)
+            selectionRectangle.drawBorder(color: UIColor.lightGray, width: 2)
             unitSelection.showSelectedUnits(amount: amountSelected)
             menuNode.showEmptyMenu()
         default:
