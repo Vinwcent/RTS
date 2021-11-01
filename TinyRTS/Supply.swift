@@ -16,9 +16,23 @@ class Supply: Buildings {
         self.buildingType = .supply
         self.finishTexture = SKTexture(imageNamed: "\(race)"+"Supply", filter: .nearest)
         
+        giveStats()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func giveStats() {
+        if self.race == .human {
+            self.maxLife = 500
+            self.life = 500
+            self.builtPercentageIncrease = 4
+        } else {
+            self.maxLife = 500
+            self.life = 500
+            self.builtPercentageIncrease = 4
+        }
+    }
+    
 }

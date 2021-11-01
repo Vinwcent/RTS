@@ -10,17 +10,36 @@ import GameplayKit
 
 class Tower: Buildings {
     
+    var attack: Int = 1
+    
     init(race: Race, index: PlayerType) {
         let texture = SKTexture(imageNamed: "construction", filter: .nearest)
         super.init(texture: texture,size: CGSize(width: 32, height: 64),race: race,index: index)
         self.buildingType = .tower
         self.finishTexture = SKTexture(imageNamed: "\(race)"+"Tower", filter: .nearest)
         
+        giveStats()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func giveStats() {
+        if self.race == .human {
+            self.attack = 25
+            self.maxLife = 500
+            self.life = 500
+            self.builtPercentageIncrease = 3
+        } else {
+            self.attack = 20
+            self.maxLife = 500
+            self.life = 500
+            self.builtPercentageIncrease = 3
+        }
+    }
+    
     
     
     // MARK: - ATTACK SYSTEM

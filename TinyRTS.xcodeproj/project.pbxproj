@@ -156,6 +156,7 @@
 		BF87893D26D05A6D004BD50D /* Units */ = {
 			isa = PBXGroup;
 			children = (
+				BFE06A9D26FC9EE3006619D2 /* Price.swift */,
 				BF97EFBC26C7E5B9008DC6BA /* Units.swift */,
 				BF97EFBE26C7E670008DC6BA /* Peasant.swift */,
 				BFEEB73C26D2820D00684F47 /* Player.swift */,
@@ -261,7 +262,6 @@
 			isa = PBXGroup;
 			children = (
 				BFD865E326C9410A00A30D16 /* Menu.swift */,
-				BFE06A9D26FC9EE3006619D2 /* Price.swift */,
 				BF3A149F26E7C0D3006A58CF /* Gui.swift */,
 				BF73AF62271337DE00FBA157 /* SelectedUnits.swift */,
 				BFE06A9A26FC7136006619D2 /* Description.swift */,

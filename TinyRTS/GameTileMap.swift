@@ -106,7 +106,8 @@ extension GameScene {
     
     func rescaleMap() {
         if mapScale == 1 {
-            mapScale = self.size.height*0.8/1366
+            let biggestSize = max(self.size.height, self.size.width)
+            mapScale = biggestSize*0.8/1366
         } else {
             mapScale = 1
         }

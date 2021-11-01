@@ -33,6 +33,7 @@ class Units: SKSpriteNode {
     var unitName: String = "None"
     
     var discoveryRadius: Int = 10
+    var attack: Int = 1
     var range: Int = 2
     var celerity: CGFloat = 32
     var maxLife = 5
@@ -127,12 +128,7 @@ class Units: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    // MARK: - FUNCS
-    
-    
-    
+        
     
     
     

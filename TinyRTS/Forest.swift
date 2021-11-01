@@ -10,7 +10,7 @@ import GameplayKit
 
 class Forest: SKSpriteNode {
     
-    var amountOfWood: Int = 10
+    var amountOfWood: Int = 100
     
     init() {
         super.init(texture: SKTexture(imageNamed: "empty", filter: .nearest), color: UIColor.red, size: CGSize(width: 32, height: 32))

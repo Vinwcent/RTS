@@ -13,9 +13,10 @@ class Ambassador: Units {
     override init(race: Race, positionInMap: [Int], index: PlayerType) {
         super.init(race: race,positionInMap: positionInMap, index: index)
         self.unitType = .ambassador
-        self.celerity = 64
-        self.life = 20
-        self.maxLife = 20
+        self.celerity = 56
+        self.life = 325
+        self.maxLife = 325
+        self.attack = 20
         switch self.race {
         case .orc:
             self.unitName = "ambassador"

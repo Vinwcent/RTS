@@ -14,8 +14,9 @@ class Archer: Units {
         super.init(race: race,positionInMap: positionInMap, index: index)
         self.unitType = .archer
         self.celerity = 48
-        self.life = 20
-        self.maxLife = 20
+        self.life = 350
+        self.maxLife = 350
+        self.attack = 25
         switch self.race {
         case .orc:
             self.unitName = "archer"

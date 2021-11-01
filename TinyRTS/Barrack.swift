@@ -15,13 +15,28 @@ class Barrack: Buildings {
         super.init(texture: texture,size: CGSize(width: 32, height: 32),race: race,index: index)
         self.buildingType = .barrack
         self.finishTexture = SKTexture(imageNamed: "\(race)"+"Barrack", filter: .nearest)
-        self.builtPercentageIncrease = 50
+        
+        giveStats()
         
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func giveStats() {
+        if self.race == .human {
+            self.maxLife = 1500
+            self.life = 1500
+            self.builtPercentageIncrease = 3
+        } else {
+            self.maxLife = 1200
+            self.life = 1200
+            self.builtPercentageIncrease = 3
+        }
+    }
+    
+    
     
     func spawnASoldier() {
         guard let scene = self.scene as? GameScene else {return}

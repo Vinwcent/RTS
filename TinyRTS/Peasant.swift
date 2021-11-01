@@ -55,7 +55,7 @@ class Peasant: Units {
     }
     var wood: Int = 0 {
         willSet {
-            if newValue > 5 {
+            if newValue > 10 {
                 self.run(SKAction.sequence([SKAction.wait(forDuration: 0.1),SKAction.run {
                     self.collectible = .wood
                     guard let farm = self.findNearestFarmFromMe() else {
@@ -101,7 +101,23 @@ class Peasant: Units {
             self.unitName = "peasant"
         }
         self.action = .idle
+        giveStats()
     }
+    
+    func giveStats() {
+        if self.race == .human {
+            self.celerity = 40
+            self.maxLife = 220
+            self.life = 220
+            self.attack = 6
+        } else {
+            self.celerity = 32
+            self.maxLife = 250
+            self.life = 250
+            self.attack = 8
+        }
+    }
+    
     
     // MARK: - ACTIONS
     
@@ -250,9 +266,15 @@ class Peasant: Units {
     // MARK: Walk to place
     
     func goStartBuilding(building: Buildings, row: Int, column: Int) {
+        guard let scene = self.scene as? GameScene else {return}
+        let type = Description.State(rawValue: "\(building.buildingType)")!
+        guard scene.menuNode.checkPrice(type: type) else {
+            scene.showError(type: .ressources)
+            return
+        }
+        
         buildingToBuild = building
         isGoingBuilding = true
-        guard let scene = self.scene as? GameScene else {return}
         let tileLeft = scene.gridGraph.node(atGridPosition: vector_int2(Int32(column-1),Int32(row)))
         let tileDown = scene.gridGraph.node(atGridPosition: vector_int2(Int32(column),Int32(row-1)))
         
@@ -290,6 +312,12 @@ class Peasant: Units {
     
     private func startTheBuilding(building: Buildings, row: Int, column: Int) {
         guard let scene = self.scene as? GameScene else {return}
+        let type = Description.State(rawValue: "\(building.buildingType)")!
+        guard scene.menuNode.checkPrice(type: type) else {
+            scene.showError(type: .ressources)
+            return
+        }
+        
         var obstacles = [GKGridGraphNode]()
         let amountOfWidthTile = building.size.width/32
         let amountofHeightTile = building.size.height/32
@@ -312,6 +340,8 @@ class Peasant: Units {
         building.texture = SKTexture(imageNamed: "construction", filter: .nearest)
         building.setupMyArea()
         buildTheBuilding(building: building)
+        
+        scene.menuNode.removePrice(type: type)
     }
     
     // MARK: Build The Building
@@ -418,11 +448,11 @@ class Peasant: Units {
         },SKAction.scale(to: 0.5, duration: 1),SKAction.run {
             self.action = .attack
         },SKAction.wait(forDuration: 6),SKAction.scale(to: 1, duration: 1)]),completion: {
-            mineNode.amountOfGold -= 1
+            mineNode.amountOfGold -= 50
             mineNode.miners -= 1
             self.isMining = false
-            self.earnCollectible(collectible: .gold, amount: 1)
-            self.gold += 1
+            self.earnCollectible(collectible: .gold, amount: 50)
+            self.gold += 50
         })
     }
     
@@ -462,7 +492,7 @@ class Peasant: Units {
                         self.removeAllActions()
                         self.cutWheat(row: row, column: column)
                     } else {
-                        wheatNode.amountOfWheat-=2
+                        wheatNode.amountOfWheat -= 2
                         self.earnCollectible(collectible: .wheat, amount: 2)
                         self.wheat += 2
                     }
@@ -594,9 +624,9 @@ class Peasant: Units {
                         // Si on l'abat, on retire la node
                         forestNode.removeFromParent()
                     } else {
-                        forestNode.amountOfWood-=2
-                        self.earnCollectible(collectible: .wood, amount: 2)
-                        self.wood += 2
+                        forestNode.amountOfWood -= 1
+                        self.earnCollectible(collectible: .wood, amount: 1)
+                        self.wood += 1
                     }
                 } else {
                     // Si il est abattu par un autre, on arrête tout et on cherche un autre arbre collé à moi ou à l'arbre qui a été abattu

@@ -122,23 +122,41 @@ class Menu: SKSpriteNode {
         guard let typeAny = userData["type"] else { return }
         let type = typeAny as! String
         if type == "base" {
-            Buildings.spawnBuildings(scene: self.scene as! GameScene, type: .base, index: scene.localPlayer!.index)
-            scene.descriptionNode.state = .base
+            if scene.descriptionNode.state == .base && checkPrice(type: .base) {
+                Buildings.spawnBuildings(scene: self.scene as! GameScene, type: .base, index: scene.localPlayer!.index)
+            } else {
+                scene.descriptionNode.state = .base
+            }
         } else if type == "farm" {
-            Buildings.spawnBuildings(scene: self.scene as! GameScene, type: .farm, index: scene.localPlayer!.index)
-            scene.descriptionNode.state = .farm
+            if scene.descriptionNode.state == .farm && checkPrice(type: .farm) {
+                Buildings.spawnBuildings(scene: self.scene as! GameScene, type: .farm, index: scene.localPlayer!.index)
+            } else {
+                scene.descriptionNode.state = .farm
+            }
         } else if type == "barrack" {
-            Buildings.spawnBuildings(scene: self.scene as! GameScene, type: .barrack, index: scene.localPlayer!.index)
-            scene.descriptionNode.state = .barrack
+            if scene.descriptionNode.state == .barrack && checkPrice(type: .barrack) {
+                Buildings.spawnBuildings(scene: self.scene as! GameScene, type: .barrack, index: scene.localPlayer!.index)
+            } else {
+                scene.descriptionNode.state = .barrack
+            }
         } else if type == "windmill" {
-            Buildings.spawnBuildings(scene: self.scene as! GameScene, type: .windmill, index: scene.localPlayer!.index)
-            scene.descriptionNode.state = .windmill
+            if scene.descriptionNode.state == .windmill && checkPrice(type: .windmill) {
+                Buildings.spawnBuildings(scene: self.scene as! GameScene, type: .windmill, index: scene.localPlayer!.index)
+            } else {
+                scene.descriptionNode.state = .windmill
+            }
         } else if type == "supply" {
-            Buildings.spawnBuildings(scene: self.scene as! GameScene, type: .supply, index: scene.localPlayer!.index)
-            scene.descriptionNode.state = .supply
+            if scene.descriptionNode.state == .supply && checkPrice(type: .supply) {
+                Buildings.spawnBuildings(scene: self.scene as! GameScene, type: .supply, index: scene.localPlayer!.index)
+            } else {
+                scene.descriptionNode.state = .supply
+            }
         } else if type == "tower" {
-            Buildings.spawnBuildings(scene: self.scene as! GameScene, type: .tower, index: scene.localPlayer!.index)
-            scene.descriptionNode.state = .tower
+            if scene.descriptionNode.state == .tower && checkPrice(type: .tower) {
+                Buildings.spawnBuildings(scene: self.scene as! GameScene, type: .tower, index: scene.localPlayer!.index)
+            } else {
+                scene.descriptionNode.state = .tower
+            }
         } else if type == "correct" {
             scene.map.enumerateChildNodes(withName: "Buildings") {
                 (node: SKNode, nil) in
@@ -178,7 +196,7 @@ class Menu: SKSpriteNode {
             }
             self.showEmptyMenu()
         } else if type == "peasant" {
-            if scene.descriptionNode.state == .peasant  && checkPrice(type: .peasant) {
+            if scene.descriptionNode.state == .peasant && checkPrice(type: .peasant) {
                 scene.map.enumerateChildNodes(withName: "Buildings") { [self]
                     (node: SKNode, nil) in
                     if let base = node as? Base{
@@ -188,53 +206,90 @@ class Menu: SKSpriteNode {
                         }
                     }
                 }
+            } else if scene.descriptionNode.state == .peasant {
+                scene.showError(type: .ressources)
             } else {
                 scene.descriptionNode.state = .peasant
             }
         } else if type == "soldier" {
-            scene.map.enumerateChildNodes(withName: "Buildings") {
-                (node: SKNode, nil) in
-                if let barrack = node as? Barrack {
-                    if barrack.isSelected {
-                        barrack.spawnASoldier()
+            if scene.descriptionNode.state == .soldier && checkPrice(type: .soldier) {
+                scene.map.enumerateChildNodes(withName: "Buildings") {
+                    (node: SKNode, nil) in
+                    if let barrack = node as? Barrack {
+                        if barrack.isSelected {
+                            self.removePrice(type: .soldier)
+                            barrack.spawnASoldier()
+                        }
                     }
                 }
+            } else if scene.descriptionNode.state == .soldier {
+                scene.showError(type: .ressources)
+            } else {
+                scene.descriptionNode.state = .soldier
             }
         } else if type == "wolf" {
-            scene.map.enumerateChildNodes(withName: "Buildings") {
-                (node: SKNode, nil) in
-                if let barrack = node as? Barrack {
-                    if barrack.isSelected {
-                        barrack.spawnAWolf()
+            if scene.descriptionNode.state == .wolf && checkPrice(type: .wolf) {
+                scene.map.enumerateChildNodes(withName: "Buildings") {
+                    (node: SKNode, nil) in
+                    if let barrack = node as? Barrack {
+                        if barrack.isSelected {
+                            self.removePrice(type: .wolf)
+                            barrack.spawnAWolf()
+                        }
                     }
                 }
+            } else if scene.descriptionNode.state == .wolf {
+                scene.showError(type: .ressources)
+            } else {
+                scene.descriptionNode.state = .wolf
             }
         } else if type == "ambassador" {
-            scene.map.enumerateChildNodes(withName: "Buildings") {
-                (node: SKNode, nil) in
-                if let barrack = node as? Barrack {
-                    if barrack.isSelected {
-                        barrack.spawnAnAmbassador()
+            if scene.descriptionNode.state == .ambassador && checkPrice(type: .ambassador) {
+                scene.map.enumerateChildNodes(withName: "Buildings") {
+                    (node: SKNode, nil) in
+                    if let barrack = node as? Barrack {
+                        if barrack.isSelected {
+                            self.removePrice(type: .ambassador)
+                            barrack.spawnAnAmbassador()
+                        }
                     }
                 }
+            } else if scene.descriptionNode.state == .ambassador {
+                scene.showError(type: .ressources)
+            } else {
+                scene.descriptionNode.state = .ambassador
             }
         } else if type == "archer" {
-            scene.map.enumerateChildNodes(withName: "Buildings") {
-                (node: SKNode, nil) in
-                if let barrack = node as? Barrack {
-                    if barrack.isSelected {
-                        barrack.spawnAnArcher()
+            if scene.descriptionNode.state == .archer && checkPrice(type: .archer) {
+                scene.map.enumerateChildNodes(withName: "Buildings") {
+                    (node: SKNode, nil) in
+                    if let barrack = node as? Barrack {
+                        if barrack.isSelected {
+                            self.removePrice(type: .archer)
+                            barrack.spawnAnArcher()
+                        }
                     }
                 }
+            } else if scene.descriptionNode.state == .archer {
+                scene.showError(type: .ressources)
+            } else {
+                scene.descriptionNode.state = .archer
             }
         } else if type == "wizard" {
-            scene.map.enumerateChildNodes(withName: "Buildings") {
-                (node: SKNode, nil) in
-                if let barrack = node as? Barrack {
-                    if barrack.isSelected {
-                        barrack.spawnAWizard()
+            if scene.descriptionNode.state == .wizard && checkPrice(type: .wizard) {
+                scene.map.enumerateChildNodes(withName: "Buildings") {
+                    (node: SKNode, nil) in
+                    if let barrack = node as? Barrack {
+                        if barrack.isSelected {
+                            self.removePrice(type: .wizard)
+                            barrack.spawnAWizard()
+                        }
                     }
                 }
+            } else if scene.descriptionNode.state == .wizard {
+                scene.showError(type: .ressources)
+            } else {
+                scene.descriptionNode.state = .wizard
             }
         } else if type == "wheat" {
             scene.map.enumerateChildNodes(withName: "Buildings") {
@@ -251,7 +306,7 @@ class Menu: SKSpriteNode {
         }
     }
     
-    private func checkPrice(type: Description.State) -> Bool {
+    func checkPrice(type: Description.State) -> Bool {
         guard let scene = self.scene as? GameScene else {return false}
         let race = scene.localPlayer!.race
         switch type {
@@ -267,6 +322,38 @@ class Menu: SKSpriteNode {
                 }
                 return false
             }
+        case .soldier:
+            if race == .human {
+                if Price.humanSoldier[0] <= scene.gui.amountOfWood && Price.humanSoldier[1] <= scene.gui.amountOfGold {
+                    return true
+                }
+                return false
+            } else {
+                if Price.orcSoldier[0] <= scene.gui.amountOfWood && Price.orcSoldier[1] <= scene.gui.amountOfGold {
+                    return true
+                }
+                return false
+            }
+        case .ambassador:
+            if Price.ambassador[0] <= scene.gui.amountOfWood && Price.ambassador[1] <= scene.gui.amountOfGold {
+                return true
+            }
+            return false
+        case .wolf:
+            if Price.wolf[0] <= scene.gui.amountOfWood && Price.wolf[1] <= scene.gui.amountOfGold {
+                return true
+            }
+            return false
+        case .wizard:
+            if Price.wizard[0] <= scene.gui.amountOfWood && Price.wizard[1] <= scene.gui.amountOfGold {
+                return true
+            }
+            return false
+        case .archer:
+            if Price.archer[0] <= scene.gui.amountOfWood && Price.archer[1] <= scene.gui.amountOfGold {
+                return true
+            }
+            return false
         case .base:
             if race == .human {
                 if Price.humanBase[0] <= scene.gui.amountOfWood && Price.humanBase[1] <= scene.gui.amountOfGold {
@@ -337,7 +424,7 @@ class Menu: SKSpriteNode {
         }
     }
     
-    private func removePrice(type: Description.State) {
+    func removePrice(type: Description.State) {
         guard let scene = self.scene as? GameScene else {return}
         let race = scene.localPlayer!.race
         switch type {
@@ -349,6 +436,26 @@ class Menu: SKSpriteNode {
                 scene.gui.amountOfWood -= Price.orcPeasant[0]
                 scene.gui.amountOfGold -= Price.orcPeasant[1]
             }
+        case .soldier:
+            if race == .human {
+                scene.gui.amountOfWood -= Price.humanSoldier[0]
+                scene.gui.amountOfGold -= Price.humanSoldier[1]
+            } else {
+                scene.gui.amountOfWood -= Price.orcSoldier[0]
+                scene.gui.amountOfGold -= Price.orcSoldier[1]
+            }
+        case .ambassador:
+            scene.gui.amountOfWood -= Price.ambassador[0]
+            scene.gui.amountOfGold -= Price.ambassador[1]
+        case .wolf:
+            scene.gui.amountOfWood -= Price.wolf[0]
+            scene.gui.amountOfGold -= Price.wolf[1]
+        case .wizard:
+            scene.gui.amountOfWood -= Price.wizard[0]
+            scene.gui.amountOfGold -= Price.wizard[1]
+        case .archer:
+            scene.gui.amountOfWood -= Price.archer[0]
+            scene.gui.amountOfGold -= Price.archer[1]
         case .base:
             if race == .human {
                 scene.gui.amountOfWood -= Price.humanBase[0]

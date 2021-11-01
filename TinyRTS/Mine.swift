@@ -10,7 +10,7 @@ import GameplayKit
 
 class Mine: SKSpriteNode {
     
-    var amountOfGold: Int = 10
+    var amountOfGold: Int = 1000
     var miners: Int = 0 {
         didSet {
             if miners > 0 {

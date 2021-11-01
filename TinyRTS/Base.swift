@@ -16,11 +16,26 @@ class Base: Buildings {
         super.init(texture: texture,size: CGSize(width: 64, height: 64), race: race, index: index)
         self.buildingType = .base
         self.finishTexture = SKTexture(imageNamed: "\(race)"+"Base", filter: .nearest)
+        
+        giveStats()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func giveStats() {
+        if self.race == .human {
+            self.maxLife = 1500
+            self.life = 1500
+            self.builtPercentageIncrease = 1
+        } else {
+            self.maxLife = 1500
+            self.life = 1500
+            self.builtPercentageIncrease = 2
+        }
+    }
+    
     
     override func doAction() {
         spawnAPeasant()

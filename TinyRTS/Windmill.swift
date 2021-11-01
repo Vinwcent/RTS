@@ -18,11 +18,20 @@ class Windmill: Buildings {
         self.buildingType = .windmill
         self.finishTexture = SKTexture(imageNamed: "windmill1", filter: .nearest)
         
+        giveStats()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func giveStats() {
+        self.maxLife = 900
+        self.life = 900
+        self.builtPercentageIncrease = 3
+    }
+    
     
     func spawnWheat() {
         guard let scene = self.scene as? GameScene else {return}

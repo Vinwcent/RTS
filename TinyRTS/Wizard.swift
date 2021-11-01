@@ -14,8 +14,9 @@ class Wizard: Units {
         super.init(race: race,positionInMap: positionInMap, index: index)
         self.unitType = .wizard
         self.celerity = 48
-        self.life = 20
-        self.maxLife = 20
+        self.life = 505
+        self.maxLife = 505
+        self.attack = 21
         switch self.race {
         case .orc:
             self.unitName = "wizard"
