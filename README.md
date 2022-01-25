@@ -5,7 +5,7 @@ Copyright (C) 2021 Vinwcent
 
 ## Introduction
 
-This game is the alpha of a small RTS which works with Gamecenter. You can already run it and play if you have an Apple developer account, two apple devices and two gamecenter account. Everything works online. I should release the complete version in December
+This game is the alpha of a small RTS which works with Gamecenter. You can already run it and play if you have an Apple developer account, two apple devices and two gamecenter account. Everything works online. Development currently paused
 
 ## Gameplay
 
