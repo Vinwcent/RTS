@@ -20,7 +20,7 @@ final class GameCenterHelper: NSObject, GKLocalPlayerListener {
     
     private let minPlayers: Int = 2
     private let maxPlayers: Int = 2
-    private let inviteMessage = "Jveuxvoirsiçamarchewsh"
+    private let inviteMessage = "I invite you to play"
     
     private var currentVC: GKMatchmakerViewController?
     
